@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LinkShelf — Your bookmark library</title>
+  <meta name="description" content="A clean, local bookmark manager with folders, tags, search, import and export. No account, no tracking." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="bar">
+    <a class="brand" href="#"><span>▤</span> LinkShelf</a>
+    <div class="actions">
+      <button id="exportBtn" class="btn ghost">Export JSON</button>
+      <button id="importBtn" class="btn ghost">Import</button>
+      <button id="resetBtn" class="btn ghost">Reset demo</button>
+      <button id="themeBtn" class="icon" title="Dark mode">◐</button>
+      <input id="fileInput" type="file" accept="application/json,.json" hidden />
+    </div>
+  </header>
+
+  <main>
+    <section class="intro"><p class="kicker">EVERYTHING WORTH KEEPING, IN ONE PLACE</p><h1>Your links, neatly shelved.</h1><p>Save useful sites, group them into folders, tag them and find them in seconds. Stored in your browser — not in someone else's database.</p></section>
+
+    <section class="panel add-panel">
+      <form id="addForm">
+        <div class="row">
+          <label>Title<input id="title" required placeholder="MDN Web Docs" /></label>
+          <label>URL<input id="url" type="url" required placeholder="https://developer.mozilla.org" /></label>
+        </div>
+        <div class="row">
+          <label>Folder<select id="folder"></select></label>
+          <label>Tags <span class="hint">(comma separated)</span><input id="tags" placeholder="docs, reference" /></label>
+        </div>
+        <label>Note<textarea id="note" rows="2" placeholder="Why did you save this?"></textarea></label>
+        <button class="btn full" type="submit">Save link</button>
+      </form>
+    </section>
+
+    <section id="stats" class="stats"></section>
+
+    <section class="panel">
+      <div class="panel-head"><h2>Your shelf</h2><div class="tools"><input id="search" class="search" type="search" placeholder="Search titles, tags, notes…" /><select id="sort"><option value="recent">Newest first</option><option value="az">Title A–Z</option><option value="visits">Most visited</option></select></div></div>
+      <div id="folders" class="folders"></div>
+      <div id="tagFilters" class="tag-filters"></div>
+      <div id="cards" class="cards"></div>
+    </section>
+  </main>
+
+  <footer>LinkShelf · local-only bookmark manager · MIT licensed</footer>
+  <div id="toast" class="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
